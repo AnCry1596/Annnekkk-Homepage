@@ -1,0 +1,7 @@
+Fix socks4a, socks5h connection errors
+Fix wrong udid when restarting on Windows VPS
+Fix captcha api v1 bug
+Fix random crash
+Fix None type() on gate 30 CVV
+Fix 407 error proxy authentication
+Fix invalid icon bug

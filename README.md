@@ -1,28 +1,45 @@
-# Downloads Page
+# CCN & CVV Checker Website
 
-A beautiful, automated downloads page for CCN & CVV Checker applications built with Catppuccin Mocha theme.
+A beautiful, automated website for CCN & CVV Checker applications built with Catppuccin Mocha theme.
 
 ## Features
 
 - **Automatic File Detection**: Scans downloads folder and generates data automatically
+- **Dynamic Changelog**: Automatically generates changelog from text files
 - **Catppuccin Mocha Theme**: Beautiful dark theme with pastel accents
 - **Responsive Design**: Works perfectly on desktop and mobile
 - **Dynamic Generation**: No hardcoded file sizes or versions
 - **Multiple Platforms**: Support for Windows (x64, ARM64), macOS (Apple Silicon, Intel), and Linux
+- **SEO Optimized**: Complete meta tags for social media sharing
 
 ## Project Structure
 
 ```
 Homepage/
-├── index.html              # Main HTML file
+├── index.html              # Homepage
+├── pricing.html            # Pricing page
+├── downloads.html          # Downloads page
+├── changelog.html          # Changelog page (dynamic)
 ├── assets/
-│   └── styles.css         # Catppuccin-themed styles
+│   ├── styles.css         # Catppuccin-themed styles
+│   └── favicon.png        # Site favicon
 ├── js/
-│   ├── downloads.js       # Main JavaScript logic
-│   └── downloads-data.js  # Auto-generated data file
+│   ├── downloads.js       # Downloads page logic
+│   ├── downloads-data.js  # Auto-generated downloads data
+│   ├── changelog.js       # Changelog page logic
+│   └── changelog-data.js  # Auto-generated changelog data
 ├── downloads/
 │   ├── V2.0.1/           # Version 2.0.1 files
 │   └── V2.0.0/           # Version 2.0.0 files
+├── changelog/
+│   ├── V2.0.1/
+│   │   ├── new.txt       # New features
+│   │   ├── improved.txt  # Improvements
+│   │   └── fixed.txt     # Bug fixes
+│   └── V2.0.0/
+│       ├── new.txt
+│       ├── improved.txt
+│       └── fixed.txt
 └── generate-downloads.js  # Script to scan and generate data
 ```
 
@@ -30,30 +47,51 @@ Homepage/
 
 When you release a new version:
 
-1. Create a new folder in `downloads/` (e.g., `V2.0.2/`)
-2. Add your release files following the naming pattern:
-   ```
-   {version}-stable-{app-prefix}-by-annnekkk-{platform}.{ext}
-   ```
-   Example: `2.0.2-stable-ccn-Checker-by-annnekkk-windows-x64.exe`
+### 1. Add Download Files
 
-3. Run the generator script:
-   ```bash
-   node generate-downloads.js
-   ```
+Create a new folder in `downloads/` (e.g., `V2.0.2/`) and add your release files following the naming pattern:
+```
+{version}-stable-{app-prefix}-by-annnekkk-{platform}.{ext}
+```
+Example: `2.0.2-stable-ccn-Checker-by-annnekkk-windows-x64.exe`
 
-4. Commit and push changes:
-   ```bash
-   git add .
-   git commit -m "Add version 2.0.2"
-   git push
-   ```
+### 2. Add Changelog
 
-The script automatically:
-- Detects all versions
-- Calculates actual file sizes
-- Marks the latest version
-- Updates the downloads page
+Create a new folder in `changelog/` (e.g., `V2.0.2/`) and add changelog text files:
+
+- **new.txt**: List new features (one per line)
+- **improved.txt**: List improvements (one per line)
+- **fixed.txt**: List bug fixes (one per line)
+- **breaking.txt**: List breaking changes (optional, one per line)
+
+Example `changelog/V2.0.2/new.txt`:
+```
+Add support for new payment gateway
+Implement dark mode toggle
+Add export to Excel feature
+```
+
+### 3. Generate Data Files
+
+Run the generator script:
+```bash
+node generate-downloads.js
+```
+
+This will automatically:
+- Scan downloads folder and calculate file sizes
+- Scan changelog folder and parse text files
+- Generate `js/downloads-data.js`
+- Generate `js/changelog-data.js`
+- Mark the latest version
+
+### 4. Commit and Push
+
+```bash
+git add .
+git commit -m "Add version 2.0.2"
+git push
+```
 
 ## GitHub Pages Deployment
 

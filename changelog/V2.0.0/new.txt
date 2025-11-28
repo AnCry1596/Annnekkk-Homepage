@@ -1,0 +1,10 @@
+Add gate 31 CVV
+Bring Catpuccin theme
+Add support for Linux, Windows ARM64, MacOS Intel, MacOS ARM
+Add card number verification system before checking
+Switch interface management tool from Qt to Slint
+Upgrade CCN Tools to new version
+Bring CCN gates 1, 3 (Only keep the gates that definitely work)
+Add auto solve MTcaptcha system
+Add color distinction for Processing Logs
+Add copy support for Processing Logs

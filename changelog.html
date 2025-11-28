@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - Annnekkk Checker</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Version history and changelog for CCN and CVV checker tools. See what's new in each release with detailed update notes.">
+    <meta name="keywords" content="CCN checker changelog, CVV checker updates, version history, release notes, what's new">
+    <meta name="author" content="Annnekkk">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://checker.annnekkk.com/changelog">
+    <meta property="og:title" content="Changelog - Annnekkk Checker">
+    <meta property="og:description" content="Version history and changelog for CCN and CVV checker tools. See what's new in each release.">
+    <meta property="og:image" content="https://checker.annnekkk.com/assets/favicon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://checker.annnekkk.com/changelog">
+    <meta property="twitter:title" content="Changelog - Annnekkk Checker">
+    <meta property="twitter:description" content="Version history and changelog for CCN and CVV checker tools. See what's new in each release.">
+    <meta property="twitter:image" content="https://checker.annnekkk.com/assets/favicon.png">
+
+    <!-- Telegram -->
+    <meta name="telegram:channel" content="@checkerforrent">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Annnekkk Checker</a>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/downloads">Downloads</a></li>
+                <li><a href="/changelog" class="active">Changelog</a></li>
+                <li><a href="https://t.me/checkerforrent" target="_blank">Telegram</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="changelog-header">
+            <h1>Changelog</h1>
+            <p>Stay updated with the latest features, improvements, and bug fixes</p>
+        </div>
+
+        <div class="changelog-container">
+            <!-- Changelog entries will be dynamically generated here -->
+        </div>
+    </div>
+
+    <!-- Changelog Data -->
+    <script src="js/changelog-data.js"></script>
+    <!-- Changelog Script -->
+    <script src="js/changelog.js"></script>
+    <script>
+        function toggleNav() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

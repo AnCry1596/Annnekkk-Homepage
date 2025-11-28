@@ -1,0 +1,8 @@
+Rewrite from Python to Rust
+Rewrite all gates to Rust
+Remove redundant buttons
+Upgrade Multithreading system, greatly increase execution speed
+Remove dead code
+Update browser emulation system
+Reduce unnecessary vars
+

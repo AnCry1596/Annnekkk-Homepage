@@ -614,6 +614,119 @@ footer {
     text-align: center;
 }
 
+/* Changelog Page */
+.changelog-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.changelog-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--ctp-mauve) 0%, var(--ctp-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.changelog-header p {
+    font-size: 1.2rem;
+    color: var(--ctp-subtext0);
+}
+
+.changelog-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.changelog-entry {
+    background: var(--ctp-surface0);
+    border: 2px solid var(--ctp-surface1);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.changelog-entry:hover {
+    border-color: var(--ctp-mauve);
+    box-shadow: 0 10px 30px rgba(203, 166, 247, 0.2);
+}
+
+.changelog-version {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ctp-surface2);
+    flex-wrap: wrap;
+}
+
+.changelog-version h2 {
+    font-size: 2rem;
+    color: var(--ctp-text);
+    margin: 0;
+}
+
+.badge {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.badge-latest {
+    background: var(--ctp-green);
+    color: var(--ctp-crust);
+}
+
+.changelog-date {
+    color: var(--ctp-subtext0);
+    font-size: 1rem;
+    margin-left: auto;
+}
+
+.changelog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.changelog-section h3 {
+    color: var(--ctp-text);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.changelog-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.changelog-section li {
+    color: var(--ctp-subtext0);
+    padding: 0.6rem 0 0.6rem 1.5rem;
+    position: relative;
+    line-height: 1.6;
+}
+
+.changelog-section li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--ctp-mauve);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-toggle {

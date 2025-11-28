@@ -1,0 +1,3 @@
+Add clear Processing Logs button
+Auto delete all old Processing Logs on start
+Add gate 13 CVV with new Adyen encrypt system
