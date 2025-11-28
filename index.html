@@ -3,7 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Downloads - CCN & CVV Checker</title>
+    <title>CCN & CVV Checker - Professional Card Validation Tools | Annnekkk</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional CCN and CVV checker tools. Fast, secure, and cross-platform validation with proxy support. Available for Windows, macOS, and Linux.">
+    <meta name="keywords" content="CCN checker, CVV checker, card validator, credit card checker, proxy support, Windows, macOS, Linux">
+    <meta name="author" content="Annnekkk">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://annnekkk.github.io/Homepage/">
+    <meta property="og:title" content="CCN & CVV Checker - Professional Card Validation Tools">
+    <meta property="og:description" content="Professional CCN and CVV checker tools. Fast, secure, and cross-platform validation with proxy support.">
+    <meta property="og:image" content="https://annnekkk.github.io/Homepage/assets/favicon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://annnekkk.github.io/Homepage/">
+    <meta property="twitter:title" content="CCN & CVV Checker - Professional Card Validation Tools">
+    <meta property="twitter:description" content="Professional CCN and CVV checker tools. Fast, secure, and cross-platform validation with proxy support.">
+    <meta property="twitter:image" content="https://annnekkk.github.io/Homepage/assets/favicon.png">
+
+    <!-- Telegram -->
+    <meta name="telegram:channel" content="@checkerforrent">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -18,22 +41,83 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Downloads</h1>
-            <p class="subtitle">Choose your platform and download the latest version</p>
-        </header>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Annnekkk</a>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="https://t.me/checkerforrent" target="_blank">Telegram</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <!-- Downloads will be dynamically generated here -->
-        <div id="downloads-container"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>CCN & CVV Checker</h1>
+        <p>Professional tools for validating credit card numbers and CVV codes. Fast, reliable, and easy to use.</p>
+        <div class="hero-buttons">
+            <a href="downloads.html" class="btn btn-primary">Download Now</a>
+            <a href="https://t.me/checkerforrent" class="btn btn-secondary" target="_blank">Contact on Telegram</a>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2025 Annnekkk. All rights reserved.</p>
-        </footer>
-    </div>
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized performance for quick validation of credit card numbers and CVV codes.</p>
+            </div>
 
-    <!-- Load downloads data first, then the main script -->
-    <script src="js/downloads-data.js"></script>
-    <script src="js/downloads.js"></script>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Safe</h3>
+                <p>All processing happens locally on your device. No data is sent to external servers.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Beautiful UI</h3>
+                <p>Modern interface with Catppuccin theme for a pleasant user experience.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>Cross-Platform</h3>
+                <p>Available for Windows, macOS (Intel & Apple Silicon), and Linux.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Easy to Access</h3>
+                <p>Support all type of proxies (http, socks4, socks4a, socks5, socks5h).</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Regular Updates</h3>
+                <p>Continuously updated with new features and improvements.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Annnekkk. All rights reserved.</p>
+    </footer>
+
+    <!-- Mobile Navigation Script -->
+    <script>
+        function toggleNav() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
