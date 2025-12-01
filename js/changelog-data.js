@@ -6,7 +6,7 @@ const changelogData = {
     {
       "version": "2.0.2",
       "isLatest": true,
-      "date": "",
+      "date": "1 December 2025",
       "new": [
         "Add back gate 10 CVV",
         "Add retry layer for not unstable internet connections",
@@ -28,7 +28,7 @@ const changelogData = {
     {
       "version": "2.0.1",
       "isLatest": false,
-      "date": "",
+      "date": "28 November 2024",
       "new": [
         "Add clear Processing Logs button",
         "Auto delete all old Processing Logs on start",
@@ -45,7 +45,7 @@ const changelogData = {
     {
       "version": "2.0.0",
       "isLatest": false,
-      "date": "",
+      "date": "23 November 2024",
       "new": [
         "Add gate 31 CVV",
         "Bring Catpuccin theme",

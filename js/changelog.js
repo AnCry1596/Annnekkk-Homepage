@@ -2,13 +2,9 @@
  * Dynamically generate changelog entries from changelog-data.js
  */
 
-function getMonthYear(version) {
-    // You can customize this mapping or read from a date file
-    const versionDates = {
-        '2.0.1': '28 November 2025',
-        '2.0.0': '23 November 2025'
-    };
-    return versionDates[version] || '';
+function getMonthYear(versionData) {
+    // Use date from changelog data (read from date.txt files)
+    return versionData.date || '';
 }
 
 function createChangelogSection(title, emoji, items) {
@@ -30,7 +26,7 @@ function createVersionEntry(versionData) {
         ? '<span class="badge badge-latest">Latest</span>'
         : '';
 
-    const dateStr = getMonthYear(versionData.version);
+    const dateStr = getMonthYear(versionData);
     const dateDisplay = dateStr ? `<span class="changelog-date">${dateStr}</span>` : '';
 
     const newSection = createChangelogSection('New Features', '✨', versionData.new);

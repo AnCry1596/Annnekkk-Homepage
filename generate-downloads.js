@@ -173,12 +173,20 @@ function scanChangelog() {
         const changelogData = {
             version: version,
             isLatest: isLatest,
-            date: '', // You can add a date file or extract from folder metadata
+            date: '',
             new: [],
             improved: [],
             fixed: [],
             breaking: []
         };
+
+        // Read date.txt
+        const dateFile = path.join(versionPath, 'date.txt');
+        if (fs.existsSync(dateFile)) {
+            const content = fs.readFileSync(dateFile, 'utf8').trim();
+            changelogData.date = content;
+            console.log(`  ✓ date.txt (${content})`);
+        }
 
         // Read new.txt
         const newFile = path.join(versionPath, 'new.txt');

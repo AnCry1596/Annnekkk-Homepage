@@ -33,10 +33,12 @@ Homepage/
 │   └── V2.0.0/           # Version 2.0.0 files
 ├── changelog/
 │   ├── V2.0.1/
+│   │   ├── date.txt      # Release date
 │   │   ├── new.txt       # New features
 │   │   ├── improved.txt  # Improvements
 │   │   └── fixed.txt     # Bug fixes
 │   └── V2.0.0/
+│       ├── date.txt
 │       ├── new.txt
 │       ├── improved.txt
 │       └── fixed.txt
@@ -59,10 +61,16 @@ Example: `2.0.2-stable-ccn-Checker-by-annnekkk-windows-x64.exe`
 
 Create a new folder in `changelog/` (e.g., `V2.0.2/`) and add changelog text files:
 
+- **date.txt**: Release date (e.g., "1 December 2024")
 - **new.txt**: List new features (one per line)
 - **improved.txt**: List improvements (one per line)
 - **fixed.txt**: List bug fixes (one per line)
 - **breaking.txt**: List breaking changes (optional, one per line)
+
+Example `changelog/V2.0.2/date.txt`:
+```
+1 December 2024
+```
 
 Example `changelog/V2.0.2/new.txt`:
 ```
