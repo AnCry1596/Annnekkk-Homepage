@@ -21,6 +21,68 @@ const icons = {
     `
 };
 
+// Detect user's platform
+function detectPlatform() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const platform = navigator.platform.toLowerCase();
+
+    // Detect OS
+    let os = 'unknown';
+    let arch = 'x64';
+
+    if (platform.includes('win')) {
+        os = 'windows';
+    } else if (platform.includes('mac') || platform.includes('darwin')) {
+        os = 'macos';
+    } else if (platform.includes('linux')) {
+        os = 'linux';
+    }
+
+    // Detect architecture
+    if (userAgent.includes('arm') || userAgent.includes('aarch64')) {
+        arch = 'arm64';
+    } else if (userAgent.includes('x86_64') || userAgent.includes('x64') || userAgent.includes('amd64')) {
+        arch = 'x64';
+    }
+
+    // Special handling for Apple Silicon
+    if (os === 'macos') {
+        // Check for Apple Silicon
+        if (userAgent.includes('mac') && (userAgent.includes('arm') || screen.width >= 2560)) {
+            arch = 'arm64';
+        }
+    }
+
+    return { os, arch };
+}
+
+// Get recommended platform suffix
+function getRecommendedPlatform() {
+    const { os, arch } = detectPlatform();
+
+    if (os === 'windows') {
+        return arch === 'arm64' ? 'windows-arm64.exe' : 'windows-x64.exe';
+    } else if (os === 'macos') {
+        return arch === 'arm64' ? 'macos-arm64.dmg' : 'macos-x64.dmg';
+    } else if (os === 'linux') {
+        return 'linux-x64';
+    }
+
+    return null;
+}
+
+// Get platform display name
+function getPlatformDisplayName(suffix) {
+    const platformMap = {
+        'windows-x64.exe': 'Windows (64-bit)',
+        'windows-arm64.exe': 'Windows ARM64',
+        'macos-arm64.dmg': 'macOS (Apple Silicon)',
+        'macos-x64.dmg': 'macOS (Intel)',
+        'linux-x64': 'Linux (64-bit)'
+    };
+    return platformMap[suffix] || suffix;
+}
+
 // Format file size
 function formatFileSize(bytes) {
     if (bytes === 0) return 'N/A';
@@ -31,7 +93,7 @@ function formatFileSize(bytes) {
 }
 
 // Create download card HTML
-function createDownloadCard(version, app, platform) {
+function createDownloadCard(version, app, platform, isRecommended = false) {
     const fileName = `${version.version}-stable-${app.prefix}-by-annnekkk-${platform.suffix}`;
     const fileUrl = `downloads/V${version.version}/${fileName}`;
 
@@ -41,9 +103,14 @@ function createDownloadCard(version, app, platform) {
         : 'N/A';
 
     const icon = icons[platform.icon](app.iconColor);
+    const recommendedBadge = isRecommended
+        ? '<span class="recommended-badge">Recommended for you</span>'
+        : '';
+    const recommendedClass = isRecommended ? ' recommended' : '';
 
     return `
-        <div class="download-card">
+        <div class="download-card${recommendedClass}">
+            ${recommendedBadge}
             ${icon}
             <div class="platform-name">${platform.name}</div>
             <div class="file-info">
@@ -56,9 +123,12 @@ function createDownloadCard(version, app, platform) {
 }
 
 // Create app section HTML
-function createAppSection(version, app, downloadData) {
+function createAppSection(version, app, downloadData, recommendedPlatform) {
     const downloadsHtml = downloadData.platforms
-        .map(platform => createDownloadCard(version, app, platform))
+        .map(platform => {
+            const isRecommended = version.isLatest && recommendedPlatform === platform.suffix;
+            return createDownloadCard(version, app, platform, isRecommended);
+        })
         .join('');
 
     return `
@@ -72,13 +142,13 @@ function createAppSection(version, app, downloadData) {
 }
 
 // Create version section HTML
-function createVersionSection(version, downloadData) {
+function createVersionSection(version, downloadData, recommendedPlatform) {
     const latestBadge = version.isLatest
         ? '<span class="latest-badge">LATEST</span>'
         : '';
 
     const appsHtml = version.apps
-        .map(app => createAppSection(version, app, downloadData))
+        .map(app => createAppSection(version, app, downloadData, recommendedPlatform))
         .join('');
 
     return `
@@ -88,6 +158,29 @@ function createVersionSection(version, downloadData) {
                 ${latestBadge}
             </div>
             ${appsHtml}
+        </div>
+    `;
+}
+
+// Create recommendation banner
+function createRecommendationBanner(recommendedPlatform) {
+    if (!recommendedPlatform) return '';
+
+    const { os } = detectPlatform();
+    const platformName = getPlatformDisplayName(recommendedPlatform);
+
+    let osIcon = '';
+    if (os === 'windows') osIcon = icons.windows('#cba6f7');
+    else if (os === 'macos') osIcon = icons.macos('#cba6f7');
+    else if (os === 'linux') osIcon = icons.linux('#cba6f7');
+
+    return `
+        <div class="recommendation-banner">
+            ${osIcon}
+            <div class="recommendation-text">
+                <h3>Detected: ${platformName}</h3>
+                <p>We recommend downloading the version marked below for your system</p>
+            </div>
         </div>
     `;
 }
@@ -107,12 +200,16 @@ function initializeDownloads() {
             throw new Error('Downloads data not loaded. Please run: node generate-downloads.js');
         }
 
+        // Detect recommended platform
+        const recommendedPlatform = getRecommendedPlatform();
+        const bannerHtml = createRecommendationBanner(recommendedPlatform);
+
         // Generate HTML for all versions
         const versionsHtml = downloadsData.versions
-            .map(version => createVersionSection(version, downloadsData))
+            .map(version => createVersionSection(version, downloadsData, recommendedPlatform))
             .join('');
 
-        container.innerHTML = versionsHtml;
+        container.innerHTML = bannerHtml + versionsHtml;
 
     } catch (error) {
         console.error('Error loading downloads:', error);
