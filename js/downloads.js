@@ -139,6 +139,9 @@ function createDownloadCard(version, app, platform, isRecommended = false) {
         : '';
     const recommendedClass = isRecommended ? ' recommended' : '';
 
+    // Add data attributes for analytics
+    const analyticsData = `data-app="${app.name}" data-version="${version.version}" data-platform="${platform.name}" data-size="${fileSize}"`;
+
     return `
         <div class="download-card${recommendedClass}">
             ${recommendedBadge}
@@ -148,7 +151,7 @@ function createDownloadCard(version, app, platform, isRecommended = false) {
                 ${platform.description}
                 <span class="file-size">${fileSize}</span>
             </div>
-            <a href="${fileUrl}" class="download-btn" download>Download</a>
+            <a href="${fileUrl}" class="download-btn" ${analyticsData} download>Download</a>
         </div>
     `;
 }
@@ -253,9 +256,20 @@ function initializeDownloads() {
         const isMobile = isMobileDevice();
         const mobileWarning = isMobile ? createMobileWarningBanner() : '';
 
+        // Track mobile warning if shown
+        if (isMobile && typeof window.analytics !== 'undefined') {
+            window.analytics.trackMobileWarning();
+        }
+
         // Detect recommended platform
         const recommendedPlatform = isMobile ? null : getRecommendedPlatform();
         const bannerHtml = isMobile ? '' : createRecommendationBanner(recommendedPlatform);
+
+        // Track platform detection
+        if (!isMobile && recommendedPlatform && typeof window.analytics !== 'undefined') {
+            const platformName = getPlatformDisplayName(recommendedPlatform);
+            window.analytics.trackPlatformDetection(platformName);
+        }
 
         // Generate HTML for all versions
         const versionsHtml = downloadsData.versions
@@ -263,6 +277,9 @@ function initializeDownloads() {
             .join('');
 
         container.innerHTML = mobileWarning + bannerHtml + versionsHtml;
+
+        // Setup download tracking
+        setupDownloadTracking();
 
     } catch (error) {
         console.error('Error loading downloads:', error);
@@ -278,6 +295,23 @@ function initializeDownloads() {
             </div>
         `;
     }
+}
+
+// Setup download tracking
+function setupDownloadTracking() {
+    const downloadButtons = document.querySelectorAll('.download-btn');
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (typeof window.analytics !== 'undefined') {
+                const appName = this.getAttribute('data-app');
+                const version = this.getAttribute('data-version');
+                const platform = this.getAttribute('data-platform');
+                const fileSize = this.getAttribute('data-size');
+
+                window.analytics.trackDownload(appName, version, platform, fileSize);
+            }
+        });
+    });
 }
 
 // Run when DOM is loaded
