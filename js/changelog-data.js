@@ -4,8 +4,30 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.1",
+      "version": "2.0.2",
       "isLatest": true,
+      "date": "",
+      "new": [
+        "Add back gate 10 CVV",
+        "Add retry layer for not unstable internet connections",
+        "Add New Homepage",
+        "Add Direct support chat in Telegram Channel"
+      ],
+      "improved": [
+        "Reduce proxied requests size by removing unnecessary headers and compressing payloads. This optimization leads to faster response times and reduced bandwidth usage, enhancing overall performance for end-users.",
+        "Reduce memory consumption by optimizing data structures and implementing efficient algorithms. This results in lower resource usage, allowing the application to run smoothly on devices with limited memory capacity.",
+        "Enhance security by updating dependencies to their latest versions and patching known vulnerabilities. This ensures that the application remains protected against emerging threats and maintains user trust."
+      ],
+      "fixed": [
+        "Fix invalid license key error that occurs for some users during activation process. This fix ensures that all valid license keys are recognized correctly, allowing users to activate their software without issues.",
+        "Resolve crash issue when handling large datasets by optimizing memory management and improving error handling mechanisms. This fix enhances the stability of the application during intensive data processing tasks.",
+        "Use .start_with() instead of .contains() to check for specific prefixes in strings. This change improves performance and accuracy when validating string formats, ensuring that only the intended prefixes are matched."
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.1",
+      "isLatest": false,
       "date": "",
       "new": [
         "Add clear Processing Logs button",
