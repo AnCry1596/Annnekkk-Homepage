@@ -1,0 +1,3 @@
+Fix invalid license key error that occurs for some users during activation process. This fix ensures that all valid license keys are recognized correctly, allowing users to activate their software without issues.
+Resolve crash issue when handling large datasets by optimizing memory management and improving error handling mechanisms. This fix enhances the stability of the application during intensive data processing tasks.
+Use .start_with() instead of .contains() to check for specific prefixes in strings. This change improves performance and accuracy when validating string formats, ensuring that only the intended prefixes are matched.

@@ -1,0 +1,4 @@
+Add back gate 10 CVV
+Add retry layer for not unstable internet connections
+Add New Homepage
+Add Direct support chat in Telegram Channel
