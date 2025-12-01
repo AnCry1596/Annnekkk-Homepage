@@ -25,6 +25,7 @@ const downloadsData = {
           "iconColor": "#f5c2e7",
           "files": {
             "windows-x64.exe": 31578624,
+            "windows-arm64.exe": 27392512,
             "macos-arm64.dmg": 12693077,
             "macos-x64.dmg": 13413271,
             "linux-x64": 44806128

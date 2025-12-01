@@ -21,6 +21,37 @@ const icons = {
     `
 };
 
+// Detect if device is mobile
+function isMobileDevice() {
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    // Check for mobile OS
+    const isAndroid = /android/i.test(userAgent);
+    const isIOS = /iphone|ipad|ipod/i.test(userAgent);
+    const isWindowsPhone = /windows phone/i.test(userAgent);
+
+    // Check for touch and screen size
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isSmallScreen = window.innerWidth <= 768;
+
+    return isAndroid || isIOS || isWindowsPhone || (isTouchDevice && isSmallScreen);
+}
+
+// Get mobile device type
+function getMobileDeviceType() {
+    const userAgent = navigator.userAgent.toLowerCase();
+
+    if (/iphone|ipad|ipod/i.test(userAgent)) {
+        return 'iOS';
+    } else if (/android/i.test(userAgent)) {
+        return 'Android';
+    } else if (/windows phone/i.test(userAgent)) {
+        return 'Windows Phone';
+    }
+
+    return 'Mobile';
+}
+
 // Detect user's platform
 function detectPlatform() {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -162,6 +193,24 @@ function createVersionSection(version, downloadData, recommendedPlatform) {
     `;
 }
 
+// Create mobile warning banner
+function createMobileWarningBanner() {
+    const deviceType = getMobileDeviceType();
+
+    return `
+        <div class="mobile-warning-banner">
+            <svg class="warning-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#f38ba8"/>
+            </svg>
+            <div class="warning-content">
+                <h3>Mobile Device Detected (${deviceType})</h3>
+                <p>CCN & CVV Checker applications are not available for mobile devices.</p>
+                <p>Please visit this page from a desktop computer (Windows, macOS, or Linux) to download.</p>
+            </div>
+        </div>
+    `;
+}
+
 // Create recommendation banner
 function createRecommendationBanner(recommendedPlatform) {
     if (!recommendedPlatform) return '';
@@ -198,6 +247,12 @@ function initializeDownloads() {
         // Check if downloadsData is defined (loaded from downloads-data.js)
         if (typeof downloadsData === 'undefined') {
             throw new Error('Downloads data not loaded. Please run: node generate-downloads.js');
+        }
+
+        // Check if mobile device
+        if (isMobileDevice()) {
+            container.innerHTML = createMobileWarningBanner();
+            return;
         }
 
         // Detect recommended platform

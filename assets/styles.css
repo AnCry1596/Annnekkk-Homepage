@@ -645,6 +645,42 @@ footer {
     margin: 0;
 }
 
+/* Mobile Warning Banner */
+.mobile-warning-banner {
+    background: linear-gradient(135deg, var(--ctp-surface0) 0%, var(--ctp-surface1) 100%);
+    border: 2px solid var(--ctp-red);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 10px 30px rgba(243, 139, 168, 0.3);
+}
+
+.warning-icon {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.warning-content h3 {
+    color: var(--ctp-red);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.warning-content p {
+    color: var(--ctp-text);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.warning-content p:last-child {
+    margin-bottom: 0;
+}
+
 /* Recommended Download Card */
 .download-card.recommended {
     border-color: var(--ctp-mauve);
@@ -871,5 +907,24 @@ footer {
     .recommended-badge {
         font-size: 0.7rem;
         padding: 0.3rem 0.8rem;
+    }
+
+    .mobile-warning-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .warning-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .warning-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .warning-content p {
+        font-size: 1rem;
     }
 }
