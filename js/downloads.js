@@ -204,8 +204,8 @@ function createMobileWarningBanner() {
             </svg>
             <div class="warning-content">
                 <h3>Mobile Device Detected (${deviceType})</h3>
-                <p>CCN & CVV Checker applications are not available for mobile devices.</p>
-                <p>Please visit this page from a desktop computer (Windows, macOS, or Linux) to download.</p>
+                <p><strong>Note:</strong> CCN & CVV Checker applications are designed for desktop use only.</p>
+                <p>These applications will not work on mobile devices. Please download on a desktop computer (Windows, macOS, or Linux) for the best experience.</p>
             </div>
         </div>
     `;
@@ -249,22 +249,20 @@ function initializeDownloads() {
             throw new Error('Downloads data not loaded. Please run: node generate-downloads.js');
         }
 
-        // Check if mobile device
-        if (isMobileDevice()) {
-            container.innerHTML = createMobileWarningBanner();
-            return;
-        }
+        // Check if mobile device and show warning
+        const isMobile = isMobileDevice();
+        const mobileWarning = isMobile ? createMobileWarningBanner() : '';
 
         // Detect recommended platform
-        const recommendedPlatform = getRecommendedPlatform();
-        const bannerHtml = createRecommendationBanner(recommendedPlatform);
+        const recommendedPlatform = isMobile ? null : getRecommendedPlatform();
+        const bannerHtml = isMobile ? '' : createRecommendationBanner(recommendedPlatform);
 
         // Generate HTML for all versions
         const versionsHtml = downloadsData.versions
             .map(version => createVersionSection(version, downloadsData, recommendedPlatform))
             .join('');
 
-        container.innerHTML = bannerHtml + versionsHtml;
+        container.innerHTML = mobileWarning + bannerHtml + versionsHtml;
 
     } catch (error) {
         console.error('Error loading downloads:', error);
