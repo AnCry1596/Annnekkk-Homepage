@@ -4,8 +4,26 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.2",
+      "version": "2.0.3",
       "isLatest": true,
+      "date": "8 December 2025",
+      "new": [
+        "Add Gate 4 CCN, 32 CVV, 33 CVV",
+        "Add Log Display customizations, now you can choose show BIN and BANK info, Time taken and my watermark or not",
+        "Add Complete Popups"
+      ],
+      "improved": [
+        "Improve retry logic, which will be fixed the problems on unstable networks"
+      ],
+      "fixed": [
+        "Fix queries error on Gate 3 CCN",
+        "Temporary disable Gate 13 CVV due to antibot"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.2",
+      "isLatest": false,
       "date": "1 December 2025",
       "new": [
         "Add back gate 10 CVV",

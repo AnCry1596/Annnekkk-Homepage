@@ -1,0 +1,3 @@
+Add Gate 4 CCN, 32 CVV, 33 CVV
+Add Log Display customizations, now you can choose show BIN and BANK info, Time taken and my watermark or not
+Add Complete Popups

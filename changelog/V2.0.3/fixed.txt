@@ -1,0 +1,2 @@
+Fix queries error on Gate 3 CCN 
+Temporary disable Gate 13 CVV due to antibot
