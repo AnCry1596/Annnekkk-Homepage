@@ -52,8 +52,56 @@ function getMobileDeviceType() {
     return 'Mobile';
 }
 
-// Detect user's platform
-function detectPlatform() {
+// Detect user's platform using modern User-Agent Client Hints API with fallback
+// Source: https://stackoverflow.com/a/77849898
+// Posted by user3717031, Retrieved 2025-12-06, License: CC BY-SA 4.0
+async function detectPlatformModern() {
+    let os = 'unknown';
+    let arch = 'x64';
+
+    try {
+        // Try modern User-Agent Client Hints API (Chromium-based browsers)
+        if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+            const ua = await navigator.userAgentData.getHighEntropyValues(['architecture', 'platform', 'platformVersion']);
+
+            // Detect OS from platform
+            const platformName = (ua.platform || '').toLowerCase();
+            if (platformName.includes('win')) {
+                os = 'windows';
+            } else if (platformName.includes('mac')) {
+                os = 'macos';
+            } else if (platformName.includes('linux')) {
+                os = 'linux';
+            }
+
+            // Detect architecture (arm, x86, etc.)
+            if (ua.architecture) {
+                const archName = ua.architecture.toLowerCase();
+                if (archName.includes('arm')) {
+                    arch = 'arm64';
+                } else if (archName.includes('x86')) {
+                    arch = 'x64';
+                }
+            }
+
+            // Check mobile flag
+            if (ua.mobile === false && os === 'macos' && arch === 'arm64') {
+                // Confirmed Apple Silicon Mac
+                return { os, arch };
+            }
+
+            return { os, arch };
+        }
+    } catch (error) {
+        console.log('User-Agent Client Hints not available, using fallback detection');
+    }
+
+    // Fallback to traditional detection
+    return detectPlatformFallback();
+}
+
+// Fallback detection for browsers without User-Agent Client Hints
+function detectPlatformFallback() {
     const userAgent = navigator.userAgent.toLowerCase();
     const platform = navigator.platform.toLowerCase();
 
@@ -69,22 +117,69 @@ function detectPlatform() {
         os = 'linux';
     }
 
-    // Detect architecture
+    // Detect architecture from user agent
     if (userAgent.includes('arm') || userAgent.includes('aarch64')) {
         arch = 'arm64';
     } else if (userAgent.includes('x86_64') || userAgent.includes('x64') || userAgent.includes('amd64')) {
         arch = 'x64';
+    } else if (userAgent.includes('wow64')) {
+        // 32-bit browser on 64-bit Windows
+        arch = 'x64';
     }
 
-    // Special handling for Apple Silicon
+    // Special handling for macOS
     if (os === 'macos') {
-        // Check for Apple Silicon
-        if (userAgent.includes('mac') && (userAgent.includes('arm') || screen.width >= 2560)) {
-            arch = 'arm64';
+        // Try to detect Apple Silicon using various heuristics
+        const maxTouchPoints = navigator.maxTouchPoints || 0;
+        const hasHighRes = screen.width >= 2560 || screen.height >= 1600;
+
+        // Apple Silicon Macs typically have high-res displays and report max touch points
+        if (maxTouchPoints > 0 || hasHighRes) {
+            // Check WebGL renderer for GPU info (Apple Silicon uses Apple GPU)
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (gl) {
+                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                if (debugInfo) {
+                    const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL).toLowerCase();
+                    if (renderer.includes('apple') && !renderer.includes('intel')) {
+                        arch = 'arm64';
+                    }
+                }
+            }
         }
     }
 
+    // Detect Windows ARM
+    if (os === 'windows' && (userAgent.includes('arm') || userAgent.includes('windows nt 10.0; arm64'))) {
+        arch = 'arm64';
+    }
+
     return { os, arch };
+}
+
+// Synchronous wrapper that returns cached result or default
+let cachedPlatform = null;
+
+function detectPlatform() {
+    // Return cached result if available
+    if (cachedPlatform) {
+        return cachedPlatform;
+    }
+
+    // Return default (will be updated by async detection)
+    const fallback = detectPlatformFallback();
+
+    // Start async detection in background
+    detectPlatformModern().then(result => {
+        cachedPlatform = result;
+        // Trigger re-render if platform changed
+        if (result.os !== fallback.os || result.arch !== fallback.arch) {
+            console.log('Updated platform detection:', result);
+        }
+    });
+
+    return fallback;
 }
 
 // Get recommended platform suffix
