@@ -1,0 +1,5 @@
+Optimized Tokio runtime configuration with limited worker threads
+Increased stack size to 3MB to prevent stack overflow
+Main runtime: Limited to 4 worker threads (Intel Xeon compatible)
+Proxy validator: Optimized with 4 worker threads
+Implemented shared queue processing model

@@ -1,0 +1,2 @@
+Fixed hanging issues on Intel Xeon processors
+Resolved deep async call chain stack overflow issues

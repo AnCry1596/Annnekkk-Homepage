@@ -4,8 +4,30 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.3",
+      "version": "2.0.4",
       "isLatest": true,
+      "date": "9 December 2025",
+      "new": [
+        "Added 120-second timeout protection for all gate operations",
+        "Prevents infinite hangs with clear error messages",
+        "Graceful timeout handling across all gates"
+      ],
+      "improved": [
+        "Optimized Tokio runtime configuration with limited worker threads",
+        "Increased stack size to 3MB to prevent stack overflow",
+        "Main runtime: Limited to 4 worker threads (Intel Xeon compatible)",
+        "Proxy validator: Optimized with 4 worker threads",
+        "Implemented shared queue processing model"
+      ],
+      "fixed": [
+        "Fixed hanging issues on Intel Xeon processors",
+        "Resolved deep async call chain stack overflow issues"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.3",
+      "isLatest": false,
       "date": "8 December 2025",
       "new": [
         "Add Gate 4 CCN, 32 CVV, 33 CVV",

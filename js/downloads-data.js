@@ -4,8 +4,38 @@
 const downloadsData = {
   "versions": [
     {
-      "version": "2.0.3",
+      "version": "2.0.4",
       "isLatest": true,
+      "apps": [
+        {
+          "name": "CCN Checker",
+          "prefix": "ccn-Checker",
+          "iconColor": "#cba6f7",
+          "files": {
+            "windows-x64.exe": 29439488,
+            "windows-arm64.exe": 25603584,
+            "macos-arm64.dmg": 12107164,
+            "macos-x64.dmg": 12743727,
+            "linux-x64": 43308024
+          }
+        },
+        {
+          "name": "CVV Checker",
+          "prefix": "cvv-Checker",
+          "iconColor": "#f5c2e7",
+          "files": {
+            "windows-x64.exe": 29438976,
+            "windows-arm64.exe": 25603584,
+            "macos-arm64.dmg": 12107159,
+            "macos-x64.dmg": 12742821,
+            "linux-x64": 43306424
+          }
+        }
+      ]
+    },
+    {
+      "version": "2.0.3",
+      "isLatest": false,
       "apps": [
         {
           "name": "CCN Checker",
