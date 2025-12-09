@@ -8,7 +8,7 @@ const changelogData = {
       "isLatest": true,
       "date": "9 December 2025",
       "new": [
-        "Added 120-second timeout protection for all gate operations",
+        "Added 600-second timeout protection for all gate operations",
         "Prevents infinite hangs with clear error messages",
         "Graceful timeout handling across all gates"
       ],
