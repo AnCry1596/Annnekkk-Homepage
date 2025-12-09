@@ -1,0 +1,6 @@
+Elapsed time now updates continuously during processing
+No more "stuck forever" panics from missing JSON fields
+No more crashes from unexpected API responses
+Continuous elapsed time updates during processing
+All errors return proper retry/failed messages
+Application stability significantly improved

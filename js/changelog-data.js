@@ -4,8 +4,30 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.4",
+      "version": "2.0.5",
       "isLatest": true,
+      "date": "9 December 2025",
+      "new": [
+        "Add Panic Protection",
+        "Added periodic timer to update elapsed time every second"
+      ],
+      "improved": [
+        "Elapsed time now updates continuously during processing",
+        "No more \"stuck forever\" panics from missing JSON fields",
+        "No more crashes from unexpected API responses",
+        "Continuous elapsed time updates during processing",
+        "All errors return proper retry/failed messages",
+        "Application stability significantly improved"
+      ],
+      "fixed": [
+        "No longer freezes when cards take long to process",
+        "Descriptive error messages for all failure cases"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.4",
+      "isLatest": false,
       "date": "9 December 2025",
       "new": [
         "Added 600-second timeout protection for all gate operations",

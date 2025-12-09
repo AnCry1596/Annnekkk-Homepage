@@ -1,0 +1,2 @@
+Add Panic Protection
+Added periodic timer to update elapsed time every second

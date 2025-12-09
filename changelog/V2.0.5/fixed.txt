@@ -1,0 +1,2 @@
+No longer freezes when cards take long to process
+Descriptive error messages for all failure cases

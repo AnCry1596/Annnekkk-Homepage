@@ -927,4 +927,210 @@ footer {
     .warning-content p {
         font-size: 1rem;
     }
+
+    .changelog-version {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .changelog-date {
+        margin-left: 0;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Extra small devices (phones in portrait, less than 576px) */
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero {
+        padding: 60px 15px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .version-section {
+        padding: 20px 15px;
+    }
+
+    .version-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .version-tag {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+
+    .latest-badge {
+        font-size: 0.8rem;
+        padding: 5px 14px;
+    }
+
+    .app-title {
+        font-size: 1.3rem;
+    }
+
+    .download-card {
+        padding: 20px;
+    }
+
+    .platform-name {
+        font-size: 1.1rem;
+    }
+
+    .file-info {
+        font-size: 0.85rem;
+    }
+
+    .download-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .recommendation-banner {
+        padding: 1rem;
+    }
+
+    .recommendation-text h3 {
+        font-size: 1rem;
+    }
+
+    .recommendation-text p {
+        font-size: 0.85rem;
+    }
+
+    .mobile-warning-banner {
+        padding: 1.5rem;
+    }
+
+    .warning-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .warning-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .warning-content p {
+        font-size: 0.9rem;
+    }
+
+    .pricing-header h1 {
+        font-size: 2rem;
+    }
+
+    .pricing-header p {
+        font-size: 1rem;
+    }
+
+    .pricing-card {
+        padding: 2rem;
+    }
+
+    .pricing-card-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .amount {
+        font-size: 3rem;
+    }
+
+    .currency {
+        font-size: 1.5rem;
+    }
+
+    .period {
+        font-size: 1rem;
+    }
+
+    .pricing-features li {
+        font-size: 0.9rem;
+        padding: 0.6rem 0;
+    }
+
+    .popular-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1.2rem;
+    }
+
+    .changelog-header h1 {
+        font-size: 2rem;
+    }
+
+    .changelog-header p {
+        font-size: 1rem;
+    }
+
+    .changelog-entry {
+        padding: 2rem 1.5rem;
+    }
+
+    .changelog-version h2 {
+        font-size: 1.5rem;
+    }
+
+    .changelog-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .changelog-section li {
+        font-size: 0.9rem;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+
+    .nav-brand {
+        font-size: 1.3rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        padding: 30px 15px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
 }
