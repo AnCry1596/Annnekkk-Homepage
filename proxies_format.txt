@@ -1,0 +1,10 @@
+http://example.com:8000
+http://user:pass@example.com:8000
+socks4://example.com:8001
+socks4://user:pass@example.com:8001
+socks4a://example.com:8001
+socks4a://user:pass@example.com:8001
+socks5://example.com:8001
+socks5://user:pass@example.com:8001
+socks5h://example.com:8001
+socks5h://user:pass@example.com:8001

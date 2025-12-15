@@ -1,0 +1,2 @@
+New changelogs API
+Better return on proxy error
