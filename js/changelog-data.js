@@ -4,8 +4,26 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.5",
+      "version": "2.0.6",
       "isLatest": true,
+      "date": "15 December 2025",
+      "new": [
+        "Add Gate 34 CVV",
+        "Update popup now contain changelogs"
+      ],
+      "improved": [
+        "New changelogs API",
+        "Better return on proxy error"
+      ],
+      "fixed": [
+        "Fixxed wrong response on gate 30 CVV",
+        "Disable gate 31 CVV due to no longer good response"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.5",
+      "isLatest": false,
       "date": "9 December 2025",
       "new": [
         "Add Panic Protection",

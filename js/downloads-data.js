@@ -4,8 +4,26 @@
 const downloadsData = {
   "versions": [
     {
-      "version": "2.0.5",
+      "version": "2.0.6",
       "isLatest": true,
+      "apps": [
+        {
+          "name": "CCN Checker",
+          "prefix": "ccn-Checker",
+          "iconColor": "#cba6f7",
+          "files": {}
+        },
+        {
+          "name": "CVV Checker",
+          "prefix": "cvv-Checker",
+          "iconColor": "#f5c2e7",
+          "files": {}
+        }
+      ]
+    },
+    {
+      "version": "2.0.5",
+      "isLatest": false,
       "apps": [
         {
           "name": "CCN Checker",
