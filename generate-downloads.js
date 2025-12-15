@@ -88,9 +88,17 @@ function scanDownloads() {
             const files = {};
 
             config.platforms.forEach(platform => {
-                const fileName = `${version}-stable-${app.prefix}-by-annnekkk-${platform.suffix}`;
-                const filePath = path.join(versionPath, fileName);
-                const fileSize = getFileSize(filePath);
+                // Try new format first (without -stable)
+                let fileName = `${version}-${app.prefix}-by-annnekkk-${platform.suffix}`;
+                let filePath = path.join(versionPath, fileName);
+                let fileSize = getFileSize(filePath);
+
+                // Fallback to old format (with -stable) for backwards compatibility
+                if (fileSize === 0) {
+                    fileName = `${version}-stable-${app.prefix}-by-annnekkk-${platform.suffix}`;
+                    filePath = path.join(versionPath, fileName);
+                    fileSize = getFileSize(filePath);
+                }
 
                 if (fileSize > 0) {
                     files[platform.suffix] = fileSize;

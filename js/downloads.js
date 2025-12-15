@@ -220,7 +220,8 @@ function formatFileSize(bytes) {
 
 // Create download card HTML
 function createDownloadCard(version, app, platform, isRecommended = false) {
-    const fileName = `${version.version}-stable-${app.prefix}-by-annnekkk-${platform.suffix}`;
+    // Use new format (without -stable)
+    const fileName = `${version.version}-${app.prefix}-by-annnekkk-${platform.suffix}`;
     const fileUrl = `downloads/V${version.version}/${fileName}`;
 
     // Get actual file size from the app's files data

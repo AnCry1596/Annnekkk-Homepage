@@ -51,11 +51,13 @@ When you release a new version:
 
 ### 1. Add Download Files
 
-Create a new folder in `downloads/` (e.g., `V2.0.2/`) and add your release files following the naming pattern:
+Create a new folder in `downloads/` (e.g., `V2.0.7/`) and add your release files following the naming pattern:
 ```
-{version}-stable-{app-prefix}-by-annnekkk-{platform}.{ext}
+{version}-{app-prefix}-by-annnekkk-{platform}.{ext}
 ```
-Example: `2.0.2-stable-ccn-Checker-by-annnekkk-windows-x64.exe`
+Example: `2.0.7-ccn-Checker-by-annnekkk-windows-x64.exe`
+
+**Note:** Old format with `-stable-` is still supported for backward compatibility.
 
 ### 2. Add Changelog
 
