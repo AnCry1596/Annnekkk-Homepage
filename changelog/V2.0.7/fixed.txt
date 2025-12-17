@@ -1,0 +1,4 @@
+Disable gate 32 CVV due to it self down, will enable again when it back
+Disable gate 33 CVV due to recaptcha V3
+Disable gate 1 CCN due to new antibot
+Fixes issue where macOS users couldn't save config, proxies, and results

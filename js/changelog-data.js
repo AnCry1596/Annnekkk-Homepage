@@ -4,8 +4,31 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.6",
+      "version": "2.0.7",
       "isLatest": true,
+      "date": "17 December 2025",
+      "new": [
+        "Add Gate 5 CCN",
+        "New \"📁 Results Folder\" button in Quick Actions section",
+        "Files now save to ~/Documents/Gate-Rent/ instead of app bundle",
+        "One-click access to open results folder in Finder/Explorer"
+      ],
+      "improved": [
+        "Improved app icons and metadata",
+        "Better macOS app bundling with proper .app structure",
+        "Easy access to all saved files"
+      ],
+      "fixed": [
+        "Disable gate 32 CVV due to it self down, will enable again when it back",
+        "Disable gate 33 CVV due to recaptcha V3",
+        "Disable gate 1 CCN due to new antibot",
+        "Fixes issue where macOS users couldn't save config, proxies, and results"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.6",
+      "isLatest": false,
       "date": "15 December 2025",
       "new": [
         "Add Gate 34 CVV",

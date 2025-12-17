@@ -1,0 +1,4 @@
+Add Gate 5 CCN
+New "📁 Results Folder" button in Quick Actions section
+Files now save to ~/Documents/Gate-Rent/ instead of app bundle
+One-click access to open results folder in Finder/Explorer

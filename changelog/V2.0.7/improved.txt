@@ -1,0 +1,3 @@
+Improved app icons and metadata
+Better macOS app bundling with proper .app structure
+Easy access to all saved files
