@@ -51,11 +51,26 @@ When you release a new version:
 
 ### 1. Add Download Files
 
-Create a new folder in `downloads/` (e.g., `V2.0.7/`) and add your release files following the naming pattern:
+Create a new folder in `downloads/` (e.g., `V2.0.7/`) and add your release files. The system supports multiple naming patterns:
+
+**Standard format:**
 ```
 {version}-{app-prefix}-by-annnekkk-{platform}.{ext}
 ```
 Example: `2.0.7-ccn-Checker-by-annnekkk-windows-x64.exe`
+
+**Alternative format:**
+```
+{app-prefix}-{version}-{platform}.{ext}
+```
+Example: `Gate-Rent-2.0.8-windows-x64.exe`
+
+**Supported app prefixes:**
+- `ccn-Checker` → CCN Checker
+- `cvv-Checker` → CVV Checker
+- `Gate-Rent` → Annnekkk Checker
+
+The script automatically detects which apps exist in each version folder, so different versions can have different apps. No manual configuration needed!
 
 **Note:** Old format with `-stable-` is still supported for backward compatibility.
 

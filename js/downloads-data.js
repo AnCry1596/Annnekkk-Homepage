@@ -4,8 +4,26 @@
 const downloadsData = {
   "versions": [
     {
-      "version": "2.0.7",
+      "version": "2.0.8",
       "isLatest": true,
+      "apps": [
+        {
+          "name": "Annnekkk Checker",
+          "prefix": "Gate-Rent",
+          "iconColor": "#89b4fa",
+          "files": {
+            "windows-x64.exe": 31026176,
+            "windows-arm64.exe": 26884608,
+            "macos-arm64.dmg": 12550270,
+            "macos-x64.dmg": 13504251,
+            "linux-x64": 44325112
+          }
+        }
+      ]
+    },
+    {
+      "version": "2.0.7",
+      "isLatest": false,
       "apps": [
         {
           "name": "CCN Checker",

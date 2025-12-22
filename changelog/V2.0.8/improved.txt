@@ -1,0 +1,2 @@
+Mode-specific configuration: Separate license keys and gates per mode
+Improved user experience with startup mode selector

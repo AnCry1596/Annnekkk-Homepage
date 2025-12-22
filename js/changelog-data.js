@@ -4,8 +4,28 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.7",
+      "version": "2.0.8",
       "isLatest": true,
+      "date": "22 December 2025",
+      "new": [
+        "Add Gate 35 CVV",
+        "Unified executable: One download for both CVV and CCN modes"
+      ],
+      "improved": [
+        "Mode-specific configuration: Separate license keys and gates per mode",
+        "Improved user experience with startup mode selector"
+      ],
+      "fixed": [
+        "Linux KDE/Wayland compatibility: Fixed file browser issues",
+        "Fixed AsyncFileDialog integration for KDE/Wayland",
+        "Disable gate 27 CVV due to it self down, will enable again when it back",
+        "Disable gate 5 CCN due to new antibot, will enable again when fixed"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.7",
+      "isLatest": false,
       "date": "17 December 2025",
       "new": [
         "Add Gate 5 CCN",

@@ -1,0 +1,4 @@
+Linux KDE/Wayland compatibility: Fixed file browser issues
+Fixed AsyncFileDialog integration for KDE/Wayland
+Disable gate 27 CVV due to it self down, will enable again when it back
+Disable gate 5 CCN due to new antibot, will enable again when fixed

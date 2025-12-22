@@ -14,12 +14,8 @@ const CHANGELOG_DIR = path.join(__dirname, 'changelog');
 const OUTPUT_FILE = path.join(__dirname, 'js', 'downloads-data.js');
 const CHANGELOG_OUTPUT_FILE = path.join(__dirname, 'js', 'changelog-data.js');
 
-// Configuration for apps and platforms
+// Configuration for platforms
 const config = {
-    apps: [
-        { name: 'CCN Checker', prefix: 'ccn-Checker', iconColor: '#cba6f7' },
-        { name: 'CVV Checker', prefix: 'cvv-Checker', iconColor: '#f5c2e7' }
-    ],
     platforms: [
         { name: 'Windows x64', suffix: 'windows-x64.exe', description: 'For 64-bit Windows systems', icon: 'windows' },
         { name: 'Windows ARM64', suffix: 'windows-arm64.exe', description: 'For ARM64 Windows systems', icon: 'windows' },
@@ -27,6 +23,13 @@ const config = {
         { name: 'macOS x64', suffix: 'macos-x64.dmg', description: 'For Intel-based Macs', icon: 'macos' },
         { name: 'Linux x64', suffix: 'linux-x64', description: 'For 64-bit Linux systems', icon: 'linux' }
     ]
+};
+
+// App metadata (for display names and colors)
+const appMetadata = {
+    'ccn-Checker': { name: 'CCN Checker', iconColor: '#cba6f7' },
+    'cvv-Checker': { name: 'CVV Checker', iconColor: '#f5c2e7' },
+    'Gate-Rent': { name: 'Annnekkk Checker', iconColor: '#89b4fa' }
 };
 
 // Get file size
@@ -43,6 +46,56 @@ function getFileSize(filePath) {
 // Extract version from folder name (e.g., "V2.0.1" -> "2.0.1")
 function extractVersion(folderName) {
     return folderName.replace(/^V/, '');
+}
+
+// Detect apps in a version folder by scanning filenames
+function detectAppsInVersion(versionPath, version) {
+    const files = fs.readdirSync(versionPath);
+    const detectedApps = new Set();
+
+    files.forEach(filename => {
+        // Try to match various filename patterns
+        // Pattern 1: {version}-{app-prefix}-by-annnekkk-{platform}.{ext}
+        // Pattern 2: {version}-stable-{app-prefix}-by-annnekkk-{platform}.{ext}
+        // Pattern 3: {app-prefix}-{version}-{platform}.{ext} (Gate-Rent format)
+
+        let match;
+
+        // Try format: {version}-{app}-by-annnekkk-...
+        match = filename.match(new RegExp(`^${version.replace(/\./g, '\\.')}-(.+?)-by-annnekkk-`));
+        if (match) {
+            detectedApps.add(match[1]);
+            return;
+        }
+
+        // Try format: {version}-stable-{app}-by-annnekkk-...
+        match = filename.match(new RegExp(`^${version.replace(/\./g, '\\.')}-stable-(.+?)-by-annnekkk-`));
+        if (match) {
+            detectedApps.add(match[1]);
+            return;
+        }
+
+        // Try format: {app}-{version}-...
+        match = filename.match(/^(.+?)-\d+\.\d+\.\d+-/);
+        if (match) {
+            detectedApps.add(match[1]);
+            return;
+        }
+    });
+
+    return Array.from(detectedApps).map(prefix => {
+        // Get metadata if available, or create default
+        const metadata = appMetadata[prefix] || {
+            name: prefix.replace(/-/g, ' '),
+            iconColor: '#a6e3a1' // Default green color
+        };
+
+        return {
+            prefix: prefix,
+            name: metadata.name,
+            iconColor: metadata.iconColor
+        };
+    });
 }
 
 // Scan downloads directory
@@ -84,27 +137,39 @@ function scanDownloads() {
 
         console.log(`\nScanning version ${version}...`);
 
-        const apps = config.apps.map(app => {
+        // Auto-detect apps in this version folder
+        const detectedApps = detectAppsInVersion(versionPath, version);
+        console.log(`  Detected apps: ${detectedApps.map(a => a.name).join(', ')}`);
+
+        const apps = detectedApps.map(app => {
             const files = {};
 
             config.platforms.forEach(platform => {
-                // Try new format first (without -stable)
-                let fileName = `${version}-${app.prefix}-by-annnekkk-${platform.suffix}`;
-                let filePath = path.join(versionPath, fileName);
-                let fileSize = getFileSize(filePath);
+                // Try different filename patterns
+                let fileName, filePath, fileSize;
 
-                // Fallback to old format (with -stable) for backwards compatibility
+                // Pattern 1: {version}-{app-prefix}-by-annnekkk-{platform}.{ext}
+                fileName = `${version}-${app.prefix}-by-annnekkk-${platform.suffix}`;
+                filePath = path.join(versionPath, fileName);
+                fileSize = getFileSize(filePath);
+
+                // Pattern 2: {version}-stable-{app-prefix}-by-annnekkk-{platform}.{ext}
                 if (fileSize === 0) {
                     fileName = `${version}-stable-${app.prefix}-by-annnekkk-${platform.suffix}`;
                     filePath = path.join(versionPath, fileName);
                     fileSize = getFileSize(filePath);
                 }
 
+                // Pattern 3: {app-prefix}-{version}-{platform}.{ext}
+                if (fileSize === 0) {
+                    fileName = `${app.prefix}-${version}-${platform.suffix}`;
+                    filePath = path.join(versionPath, fileName);
+                    fileSize = getFileSize(filePath);
+                }
+
                 if (fileSize > 0) {
                     files[platform.suffix] = fileSize;
-                    console.log(`  ✓ ${fileName} (${formatBytes(fileSize)})`);
-                } else {
-                    console.log(`  ✗ ${fileName} (not found)`);
+                    console.log(`    ✓ ${fileName} (${formatBytes(fileSize)})`);
                 }
             });
 
