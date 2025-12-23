@@ -220,15 +220,15 @@ function formatFileSize(bytes) {
 
 // Create download card HTML
 function createDownloadCard(version, app, platform, isRecommended = false) {
-    // Try different filename patterns
-    // Pattern 1: {version}-{app-prefix}-by-annnekkk-{platform}.{ext}
-    // Pattern 2: {app-prefix}-{version}-{platform}.{ext} (Gate-Rent format)
-    let fileName = `${version.version}-${app.prefix}-by-annnekkk-${platform.suffix}`;
+    // Determine filename pattern based on app prefix
+    // Gate-Rent uses format: {app-prefix}-{version}-{platform}.{ext}
+    // Others use format: {version}-{app-prefix}-by-annnekkk-{platform}.{ext}
+    let fileName;
 
-    // Check if file exists in app.files data
-    if (!app.files || !app.files[platform.suffix]) {
-        // Try alternative format
+    if (app.prefix === 'Gate-Rent') {
         fileName = `${app.prefix}-${version.version}-${platform.suffix}`;
+    } else {
+        fileName = `${version.version}-${app.prefix}-by-annnekkk-${platform.suffix}`;
     }
 
     const fileUrl = `downloads/V${version.version}/${fileName}`;
