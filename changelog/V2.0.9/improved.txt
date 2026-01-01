@@ -1,0 +1,4 @@
+Optimize Performance
+Improved proxy credential handling for faster connections
+Reduced latency in proxy connections
+Reduced executable size for better performance

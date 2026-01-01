@@ -1,0 +1,5 @@
+Fixed leaked proxy credentials with website
+Improved compatibility with various proxy types
+Enhanced error handling for proxy connections
+Fixed instantly crash on devices with no display adapters
+Fixed memory leaks related to proxy usage

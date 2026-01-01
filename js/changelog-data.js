@@ -4,9 +4,34 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.8",
+      "version": "2.0.9",
       "isLatest": true,
-      "date": "22 December 2025",
+      "date": "January 1st, 2026",
+      "new": [
+        "🎉Happy New Year!",
+        "Added Gate 6 CCN",
+        "Added Support for Microsoft Basic Display Adapter and Microsoft Remote Display Adapter",
+        "Visual C++ Runtime dependency checking (Windows)"
+      ],
+      "improved": [
+        "Optimize Performance",
+        "Improved proxy credential handling for faster connections",
+        "Reduced latency in proxy connections",
+        "Reduced executable size for better performance"
+      ],
+      "fixed": [
+        "Fixed leaked proxy credentials with website",
+        "Improved compatibility with various proxy types",
+        "Enhanced error handling for proxy connections",
+        "Fixed instantly crash on devices with no display adapters",
+        "Fixed memory leaks related to proxy usage"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.8",
+      "isLatest": false,
+      "date": "December 22nd, 2025",
       "new": [
         "Add Gate 35 CVV",
         "Unified executable: One download for both CVV and CCN modes"
@@ -26,7 +51,7 @@ const changelogData = {
     {
       "version": "2.0.7",
       "isLatest": false,
-      "date": "17 December 2025",
+      "date": "December 17th, 2025",
       "new": [
         "Add Gate 5 CCN",
         "New \"📁 Results Folder\" button in Quick Actions section",
@@ -49,7 +74,7 @@ const changelogData = {
     {
       "version": "2.0.6",
       "isLatest": false,
-      "date": "15 December 2025",
+      "date": "December 15th, 2025",
       "new": [
         "Add Gate 34 CVV",
         "Update popup now contain changelogs"
@@ -67,7 +92,7 @@ const changelogData = {
     {
       "version": "2.0.5",
       "isLatest": false,
-      "date": "9 December 2025",
+      "date": "December 9th, 2025",
       "new": [
         "Add Panic Protection",
         "Added periodic timer to update elapsed time every second"
@@ -89,7 +114,7 @@ const changelogData = {
     {
       "version": "2.0.4",
       "isLatest": false,
-      "date": "9 December 2025",
+      "date": "December 9th, 2025",
       "new": [
         "Added 600-second timeout protection for all gate operations",
         "Prevents infinite hangs with clear error messages",
@@ -111,7 +136,7 @@ const changelogData = {
     {
       "version": "2.0.3",
       "isLatest": false,
-      "date": "8 December 2025",
+      "date": "December 8th, 2025",
       "new": [
         "Add Gate 4 CCN, 32 CVV, 33 CVV",
         "Add Log Display customizations, now you can choose show BIN and BANK info, Time taken and my watermark or not",
@@ -129,7 +154,7 @@ const changelogData = {
     {
       "version": "2.0.2",
       "isLatest": false,
-      "date": "1 December 2025",
+      "date": "December 1st, 2025",
       "new": [
         "Add back gate 10 CVV",
         "Add retry layer for not unstable internet connections",
@@ -151,7 +176,7 @@ const changelogData = {
     {
       "version": "2.0.1",
       "isLatest": false,
-      "date": "28 November 2024",
+      "date": "November 28th, 2025",
       "new": [
         "Add clear Processing Logs button",
         "Auto delete all old Processing Logs on start",
@@ -168,7 +193,7 @@ const changelogData = {
     {
       "version": "2.0.0",
       "isLatest": false,
-      "date": "23 November 2024",
+      "date": "November 23rd, 2025",
       "new": [
         "Add gate 31 CVV",
         "Bring Catpuccin theme",

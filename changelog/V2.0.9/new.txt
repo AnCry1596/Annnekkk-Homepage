@@ -1,0 +1,4 @@
+🎉Happy New Year!
+Added Gate 6 CCN
+Added Support for Microsoft Basic Display Adapter and Microsoft Remote Display Adapter
+Visual C++ Runtime dependency checking (Windows)
