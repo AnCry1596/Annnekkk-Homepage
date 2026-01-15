@@ -1,0 +1,3 @@
+Switched to Skia renderer for better stability (eliminates WGPU crashes)
+Improved memory management to reduce leaks and optimize performance
+Optimized worker thread handling to prevent memory leaks

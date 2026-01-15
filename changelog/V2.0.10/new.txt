@@ -1,0 +1,5 @@
+Added Gate 36 CVV
+Added log line limits (500 all logs, 200 per category) to prevent memory accumulation
+Removed text-based log accumulation that was causing memory growth
+Added FIX-PERMISSIONS.command helper script in DMG for Apple Silicon users
+Added system stats bar showing CPU, RAM, Threads, and Uptime

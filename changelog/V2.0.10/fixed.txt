@@ -1,0 +1,3 @@
+Fixed memory leaked with worker threads
+Fixed crash when updating settings on certain configurations
+Fixed crash related to system stats bar on some systems

@@ -4,8 +4,31 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.9",
+      "version": "2.0.10",
       "isLatest": true,
+      "date": "January 15th, 2026",
+      "new": [
+        "Added Gate 36 CVV",
+        "Added log line limits (500 all logs, 200 per category) to prevent memory accumulation",
+        "Removed text-based log accumulation that was causing memory growth",
+        "Added FIX-PERMISSIONS.command helper script in DMG for Apple Silicon users",
+        "Added system stats bar showing CPU, RAM, Threads, and Uptime"
+      ],
+      "improved": [
+        "Switched to Skia renderer for better stability (eliminates WGPU crashes)",
+        "Improved memory management to reduce leaks and optimize performance",
+        "Optimized worker thread handling to prevent memory leaks"
+      ],
+      "fixed": [
+        "Fixed memory leaked with worker threads",
+        "Fixed crash when updating settings on certain configurations",
+        "Fixed crash related to system stats bar on some systems"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.9",
+      "isLatest": false,
       "date": "January 1st, 2026",
       "new": [
         "🎉Happy New Year!",
