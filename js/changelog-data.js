@@ -4,8 +4,28 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.10",
+      "version": "2.0.11",
       "isLatest": true,
+      "date": "January 28th, 2026",
+      "new": [
+        "Add gate7 (CCN) and gate37 (CVV)",
+        "Update new OMOCaptcha API"
+      ],
+      "improved": [
+        "Update dependencies",
+        "Remove deprecated functions",
+        "Remove unnecessary dependencies",
+        "Improve memory management"
+      ],
+      "fixed": [
+        "Fixed gate 1 (CCN) and gate 30 (CVV) issues",
+        "Remove broken refererer logic"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.10",
+      "isLatest": false,
       "date": "January 15th, 2026",
       "new": [
         "Added Gate 36 CVV",

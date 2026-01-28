@@ -1,0 +1,2 @@
+Fixed gate 1 (CCN) and gate 30 (CVV) issues
+Remove broken refererer logic

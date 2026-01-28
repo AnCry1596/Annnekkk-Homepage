@@ -1,0 +1,4 @@
+Update dependencies
+Remove deprecated functions
+Remove unnecessary dependencies
+Improve memory management

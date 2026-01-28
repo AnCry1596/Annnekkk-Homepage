@@ -1,0 +1,2 @@
+Add gate7 (CCN) and gate37 (CVV)
+Update new OMOCaptcha API
