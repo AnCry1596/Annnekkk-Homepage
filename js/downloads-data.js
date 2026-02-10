@@ -4,8 +4,26 @@
 const downloadsData = {
   "versions": [
     {
-      "version": "2.0.11",
+      "version": "2.0.12",
       "isLatest": true,
+      "apps": [
+        {
+          "name": "Annnekkk Checker",
+          "prefix": "Gate-Rent",
+          "iconColor": "#89b4fa",
+          "files": {
+            "windows-x64.exe": 37824000,
+            "windows-arm64.exe": 32823296,
+            "macos-arm64.dmg": 12027199,
+            "macos-x64.dmg": 13326558,
+            "linux-x64": 36920272
+          }
+        }
+      ]
+    },
+    {
+      "version": "2.0.11",
+      "isLatest": false,
       "apps": [
         {
           "name": "Annnekkk Checker",

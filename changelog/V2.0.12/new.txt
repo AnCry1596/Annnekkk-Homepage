@@ -1,0 +1,2 @@
+Add gate 38, 39, 40, 41 (CVV), gate 8 (CCN)
+Added sharing file read and write threads

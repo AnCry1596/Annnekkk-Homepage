@@ -1,0 +1,4 @@
+Removed duplicated code
+Reduce memory usage
+Updated dependencies
+Temporarily disabled gate 30 due to Recaptcha v3 changes

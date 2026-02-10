@@ -4,8 +4,27 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.11",
+      "version": "2.0.12",
       "isLatest": true,
+      "date": "February 10th, 2026",
+      "new": [
+        "Add gate 38, 39, 40, 41 (CVV), gate 8 (CCN)",
+        "Added sharing file read and write threads"
+      ],
+      "improved": [
+        "Removed duplicated code",
+        "Reduce memory usage",
+        "Updated dependencies",
+        "Temporarily disabled gate 30 due to Recaptcha v3 changes"
+      ],
+      "fixed": [
+        "Fixed memory leak"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.11",
+      "isLatest": false,
       "date": "January 28th, 2026",
       "new": [
         "Add gate7 (CCN) and gate37 (CVV)",
