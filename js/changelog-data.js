@@ -6,7 +6,7 @@ const changelogData = {
     {
       "version": "2.0.12",
       "isLatest": true,
-      "date": "February 10th, 2026",
+      "date": "March 3rd, 2026",
       "new": [
         "Add gate 38, 39, 40, 41 (CVV), gate 8 (CCN)",
         "Added sharing file read and write threads"
@@ -15,10 +15,12 @@ const changelogData = {
         "Removed duplicated code",
         "Reduce memory usage",
         "Updated dependencies",
-        "Temporarily disabled gate 30 due to Recaptcha v3 changes"
+        "Temporarily disabled gate 30 due to Recaptcha v3 changes",
+        "License performance improvements"
       ],
       "fixed": [
-        "Fixed memory leak"
+        "Fixed memory leak",
+        "Fixed issue with new Stripe 3D Secure implementation"
       ],
       "breaking": []
     },

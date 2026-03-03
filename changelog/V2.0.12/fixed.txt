@@ -1,1 +1,2 @@
 Fixed memory leak
+Fixed issue with new Stripe 3D Secure implementation

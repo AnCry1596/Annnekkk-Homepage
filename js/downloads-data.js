@@ -12,11 +12,11 @@ const downloadsData = {
           "prefix": "Gate-Rent",
           "iconColor": "#89b4fa",
           "files": {
-            "windows-x64.exe": 37824000,
-            "windows-arm64.exe": 32823296,
-            "macos-arm64.dmg": 12027199,
-            "macos-x64.dmg": 13326558,
-            "linux-x64": 36920272
+            "windows-x64.exe": 37989888,
+            "windows-arm64.exe": 32820736,
+            "macos-arm64.dmg": 12010774,
+            "macos-x64.dmg": 13315710,
+            "linux-x64": 36898392
           }
         }
       ]
