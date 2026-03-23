@@ -4,8 +4,32 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.12",
+      "version": "2.0.13",
       "isLatest": true,
+      "date": "March 23rd, 2026",
+      "new": [
+        "Remove Gate 3, Gate 8 CCN",
+        "Add Gate 9 CCN, Gate 42 CVV",
+        "Add Check Live Proxy",
+        "Remove Quick Check mode (Single Line)",
+        "Add Paste mode (Multi Line)"
+      ],
+      "improved": [
+        "Removed duplicated code",
+        "Reduce memory usage",
+        "Updated dependencies",
+        "Move Invalid card to DIE instead of ERROR"
+      ],
+      "fixed": [
+        "Fixed memory leak",
+        "Fixed wrong live response from gate 36",
+        "Fixed issue with new Stripe 3D Secure implementation"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.12",
+      "isLatest": false,
       "date": "March 3rd, 2026",
       "new": [
         "Add gate 38, 39, 40, 41 (CVV), gate 8 (CCN)",

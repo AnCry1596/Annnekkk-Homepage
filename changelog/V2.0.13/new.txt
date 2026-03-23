@@ -1,0 +1,5 @@
+Remove Gate 3, Gate 8 CCN
+Add Gate 9 CCN, Gate 42 CVV
+Add Check Live Proxy
+Remove Quick Check mode (Single Line)
+Add Paste mode (Multi Line)
