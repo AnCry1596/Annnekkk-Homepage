@@ -4,8 +4,25 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.13",
+      "version": "2.0.14",
       "isLatest": true,
+      "date": "March 25th, 2026",
+      "new": [
+        "Add Gate 10 CCN"
+      ],
+      "improved": [
+        "Removed unused import gate 9 CCN",
+        "Reduce memory usage",
+        "Updated dependencies"
+      ],
+      "fixed": [
+        "Remove captcha key required for gate 9 CCN"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.13",
+      "isLatest": false,
       "date": "March 23rd, 2026",
       "new": [
         "Remove Gate 3, Gate 8 CCN",
