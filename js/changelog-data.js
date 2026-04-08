@@ -4,8 +4,23 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.15",
+      "version": "2.0.16",
       "isLatest": true,
+      "date": "April 8th, 2026",
+      "new": [
+        "Remove gate 29 CVV due to new antibot"
+      ],
+      "improved": [
+        "Update gate 43 CVV with captcha bypassed"
+      ],
+      "fixed": [
+        "Fix gate 43 CVV stuck on captcha"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.15",
+      "isLatest": false,
       "date": "April 8th, 2026",
       "new": [
         "Add Gate 43 CVV",
