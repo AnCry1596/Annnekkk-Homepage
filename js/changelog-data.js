@@ -4,8 +4,27 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.14",
+      "version": "2.0.15",
       "isLatest": true,
+      "date": "April 8th, 2026",
+      "new": [
+        "Add Gate 43 CVV",
+        "Remove gate 10 CVV due to new captcha system",
+        "Remove gate 42 CVV due to new captcha system",
+        "Add Captcha Manager for enhanced captcha handling",
+        "Add total solved captcha count to dashboard"
+      ],
+      "improved": [
+        "Improve solving speed for gates that contain captcha"
+      ],
+      "fixed": [
+        "Fix memories leak in captcha handling"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.14",
+      "isLatest": false,
       "date": "March 25th, 2026",
       "new": [
         "Add Gate 10 CCN"
