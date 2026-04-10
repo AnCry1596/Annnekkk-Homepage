@@ -1,0 +1,1 @@
+Fix gate 43 CVV stuck on captcha

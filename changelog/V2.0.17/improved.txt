@@ -1,0 +1,1 @@
+Update gate 43 CVV with new captcha bypass method to prevent getting stuck on captcha.
