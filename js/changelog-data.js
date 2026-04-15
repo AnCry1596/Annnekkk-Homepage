@@ -4,8 +4,23 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.17",
+      "version": "2.0.18",
       "isLatest": true,
+      "date": "April 15th, 2026",
+      "new": [
+        "Capmonster.Cloud supported"
+      ],
+      "improved": [
+        "Update antibot bypass for gate 43 CVV."
+      ],
+      "fixed": [
+        "Fix gate 43 CVV stuck on captcha"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.17",
+      "isLatest": false,
       "date": "April 10th, 2026",
       "new": [
         "Gate 43 CVV reworked"
