@@ -4,8 +4,24 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.18",
+      "version": "2.0.19",
       "isLatest": true,
+      "date": "April 16th, 2026",
+      "new": [
+        "Fix issue with Captcha Manager",
+        "Add check captcha token timeout to prevent infinite loop"
+      ],
+      "improved": [
+        "Update interaction with Captcha Manager"
+      ],
+      "fixed": [
+        "Improve antibot bypass for gate 43 CVV."
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.18",
+      "isLatest": false,
       "date": "April 15th, 2026",
       "new": [
         "Capmonster.Cloud supported"

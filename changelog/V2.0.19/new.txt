@@ -1,0 +1,2 @@
+Fix issue with Captcha Manager
+Add check captcha token timeout to prevent infinite loop
