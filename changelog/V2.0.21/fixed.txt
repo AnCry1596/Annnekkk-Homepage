@@ -1,0 +1,2 @@
+Fix Issue with image captcha
+Fix missing required fields in captcha solver

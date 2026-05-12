@@ -4,8 +4,23 @@
 const changelogData = {
   "versions": [
     {
-      "version": "2.0.20",
+      "version": "2.0.21",
       "isLatest": true,
+      "date": "May 12th, 2026",
+      "new": [],
+      "improved": [
+        "Upgrade components",
+        "Upgrade to latest version of Rust"
+      ],
+      "fixed": [
+        "Fix Issue with image captcha",
+        "Fix missing required fields in captcha solver"
+      ],
+      "breaking": []
+    },
+    {
+      "version": "2.0.20",
+      "isLatest": false,
       "date": "April 21st, 2026",
       "new": [
         "Add Gate44 CVV",
