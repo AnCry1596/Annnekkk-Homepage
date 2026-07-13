@@ -215,11 +215,17 @@ app.get('/downloads/:version/:file', (req, reply) => {
   return reply.sendFile(`${path.basename(version)}/${path.basename(file)}`, DOWNLOADS);
 });
 
-// clean URL with trailing slash (e.g. /downloads/) -> the .html page
-app.get('/:page/', (req, reply) => {
-  const file = `${req.params.page}.html`;
-  return fs.existsSync(path.join(PUBLIC, file)) ? reply.sendFile(file) : reply.callNotFound();
-});
+// clean URL -> the .html page, with or without trailing slash.
+// Nuxt prerenders both downloads.html AND a downloads/ dir (holding _payload.json);
+// the dir shadows the .html in static serving, so a bare /downloads 404s. Register
+// only the known pretty-URL pages so the static wildcard still owns everything else
+// (/index.html, /robots.txt, binaries, assets).
+const PAGES = ['downloads', 'changelog', 'pricing'];
+for (const p of PAGES) {
+  const handler = (_req, reply) => reply.sendFile(`${p}.html`);
+  app.get(`/${p}`, handler);
+  app.get(`/${p}/`, handler);
+}
 
 await app.listen({ port: Number(PORT), host: '0.0.0.0' });
 console.log(`http://localhost:${PORT}`);
