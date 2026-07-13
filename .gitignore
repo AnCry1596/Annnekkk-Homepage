@@ -4,8 +4,9 @@ node_modules/
 # multer upload staging
 downloads/_tmp/
 
-# Generated site: public/ is now built from nuxt/ (source of truth in nuxt/pages + nuxt/assets + nuxt/public)
-public/
+# Generated site: /public is built from nuxt/. Leading slash anchors this to the
+# repo root so it does NOT also ignore nuxt/public/ (the committed source assets).
+/public/
 nuxt/.nuxt/
 nuxt/.output/
 nuxt/dist/
