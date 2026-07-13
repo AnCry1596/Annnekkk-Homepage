@@ -16,6 +16,21 @@ const PLATFORMS = [
 const fmtSize = (b) => (b ? (b / 1048576).toFixed(1) + ' MB' : '')
 const suffixOf = (name) => PLATFORMS.map((p) => p[0]).find((s) => name.endsWith(s)) || null
 
+// Bump the last dotted number: 2.0.22 -> 2.0.23. Falls back to '' if unparseable.
+function bumpPatch(version) {
+  const m = /^(.*?)(\d+)(\D*)$/.exec(version || '')
+  if (!m) return ''
+  return `${m[1]}${Number(m[2]) + 1}${m[3]}`
+}
+
+// "July 9th, 2026" — matches the existing date format on prior entries.
+function todayLabel() {
+  const d = new Date()
+  const day = d.getDate()
+  const s = day % 10 === 1 && day !== 11 ? 'st' : day % 10 === 2 && day !== 12 ? 'nd' : day % 10 === 3 && day !== 13 ? 'rd' : 'th'
+  return `${d.toLocaleString('en-US', { month: 'long' })} ${day}${s}, ${d.getFullYear()}`
+}
+
 const authed = ref(false)
 const pw = ref('')
 const loginMsg = ref(null) // { ok, text }
@@ -54,6 +69,15 @@ function enter() {
 // ── changelog ──
 async function loadChangelog() {
   clVersions.value = (await $fetch('/api/changelog')).versions || []
+  prefillChangelog()
+}
+
+// Default a fresh changelog entry: next patch version + today's date. Only when the
+// form is untouched, so it never clobbers something you're mid-editing.
+function prefillChangelog() {
+  const latest = clVersions.value[0]
+  if (!cl.version) cl.version = latest ? bumpPatch(latest.version) : ''
+  if (!cl.date) cl.date = todayLabel()
 }
 
 function editChangelog(v) {
@@ -82,6 +106,24 @@ async function delChangelog(version) {
 // ── downloads ──
 async function loadDownloads() {
   dlVersions.value = (await $fetch('/api/downloads')).versions || []
+  prefillDownload()
+}
+
+// Default the downloads form to the latest existing version + its app name/prefix,
+// so the common case (add a build to the current release) is one click. Only fills
+// blanks. The refetch button forces a re-pull of these values.
+function prefillDownload(force = false) {
+  const latest = dlVersions.value[0]
+  if (!latest) return
+  const app = latest.apps[0] || {}
+  if (force || !dl.version) dl.version = latest.version
+  if (force || !dl.name) dl.name = app.name || ''
+  if (force || !dl.prefix) dl.prefix = app.prefix || ''
+}
+
+async function refetchDownload() {
+  dlVersions.value = (await $fetch('/api/downloads')).versions || []
+  prefillDownload(true)
 }
 
 async function putFile(version, suffix, file) {
@@ -216,7 +258,10 @@ onMounted(async () => {
       <h2>Downloads</h2>
       <p>Create a version, then upload a build for each platform. One app per version.</p>
       <label for="dlVersion">Version *</label>
-      <input id="dlVersion" v-model="dl.version" placeholder="2.0.22" />
+      <div style="display:flex;gap:.5rem">
+        <input id="dlVersion" v-model="dl.version" placeholder="2.0.22" />
+        <button class="load refetch" type="button" title="Reset to latest version" @click="refetchDownload">↻</button>
+      </div>
       <label for="dlName">App name</label>
       <input id="dlName" v-model="dl.name" placeholder="Annnekkk Checker" />
       <label for="dlPrefix">File prefix</label>
@@ -289,5 +334,10 @@ onMounted(async () => {
   color: var(--ctp-red, #f38ba8); border-radius: 8px; padding: .3rem .7rem; cursor: pointer;
 }
 .row .load { border-color: var(--ctp-blue, #89b4fa); color: var(--ctp-blue, #89b4fa); }
+.refetch {
+  flex: 0 0 auto; width: 3rem; margin: 0; cursor: pointer; font-size: 1.1rem;
+  background: transparent; border: 1px solid var(--ctp-blue, #89b4fa);
+  color: var(--ctp-blue, #89b4fa); border-radius: 10px;
+}
 #login { max-width: 420px; }
 </style>
