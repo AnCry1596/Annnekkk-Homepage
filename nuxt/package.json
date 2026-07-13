@@ -1,0 +1,12 @@
+{
+  "name": "annnekkk-homepage-ui",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^3.13.0"
+  }
+}

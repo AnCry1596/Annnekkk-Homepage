@@ -1,6 +1,15 @@
 # Node modules (if you add any npm packages in the future)
 node_modules/
 
+# multer upload staging
+downloads/_tmp/
+
+# Generated site: public/ is now built from nuxt/ (source of truth in nuxt/pages + nuxt/assets + nuxt/public)
+public/
+nuxt/.nuxt/
+nuxt/.output/
+nuxt/dist/
+
 # OS files
 .DS_Store
 Thumbs.db

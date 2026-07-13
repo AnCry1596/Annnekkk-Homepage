@@ -1134,3 +1134,127 @@ footer {
         padding: 0 10px;
     }
 }
+
+/* ============================================================
+   UI ENHANCEMENT LAYER (appended — overrides base above)
+   Depth, motion, glass, animated aurora background.
+   ============================================================ */
+
+/* Animated aurora background behind everything */
+body {
+    position: relative;
+    background: var(--ctp-base);
+    overflow-x: hidden;
+}
+body::before {
+    content: '';
+    position: fixed;
+    inset: -20% -20% auto -20%;
+    height: 140vh;
+    z-index: -1;
+    background:
+        radial-gradient(40% 40% at 20% 20%, rgba(203, 166, 247, 0.18), transparent 70%),
+        radial-gradient(45% 45% at 80% 25%, rgba(137, 180, 250, 0.16), transparent 70%),
+        radial-gradient(40% 40% at 50% 80%, rgba(245, 194, 231, 0.12), transparent 70%),
+        linear-gradient(135deg, var(--ctp-base) 0%, var(--ctp-crust) 100%);
+    background-size: 200% 200%, 200% 200%, 200% 200%, 100% 100%;
+    animation: aurora 24s ease-in-out infinite alternate;
+    filter: blur(10px);
+}
+@keyframes aurora {
+    0%   { background-position: 0% 0%, 100% 0%, 50% 100%, 0 0; }
+    100% { background-position: 100% 50%, 0% 60%, 60% 0%, 0 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; }
+}
+
+/* Glass navbar */
+nav {
+    background: rgba(24, 24, 37, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid rgba(88, 91, 112, 0.5);
+}
+.nav-links a { transition: color .25s ease, background .25s ease, transform .25s ease; }
+.nav-links a:hover { transform: translateY(-1px); }
+
+/* Entrance animation for content cards */
+@keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.version-section, .feature-card, .pricing-card, .changelog-entry, .download-card {
+    animation: rise .5s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* Cards: subtle glass + smoother, springier hover */
+.feature-card, .pricing-card, .changelog-entry, .version-section {
+    background: rgba(49, 50, 68, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(69, 71, 90, 0.9);
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+
+/* Download cards: top-accent sheen on hover + align buttons to a shared baseline */
+.download-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease, background .35s ease;
+}
+/* Pin size + button to a shared baseline across cards regardless of description length */
+.download-card .file-info { margin-top: auto; }
+.download-card .file-size { min-height: 1.2em; }
+/* ponytail: clip only non-recommended cards; recommended ones must let the badge overflow */
+.download-card:not(.recommended) { overflow: hidden; }
+.download-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(90deg, var(--ctp-mauve), var(--ctp-pink), var(--ctp-blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s ease;
+}
+.download-card:hover::before { transform: scaleX(1); }
+
+/* Buttons: gradient shift + glow on hover */
+.download-btn, .btn-primary {
+    background-size: 180% 180%;
+    background-position: 0% 50%;
+    transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease, background-position .5s ease;
+}
+.download-btn:hover, .btn-primary:hover {
+    background-position: 100% 50%;
+}
+
+/* Gradient headings get a bit more presence */
+.hero h1 {
+    letter-spacing: -1px;
+    filter: drop-shadow(0 4px 20px rgba(203, 166, 247, 0.25));
+}
+
+/* Version tag / badges: soft glow */
+.version-tag { box-shadow: 0 6px 20px rgba(203, 166, 247, 0.35); }
+.latest-badge, .badge-latest { box-shadow: 0 4px 14px rgba(166, 227, 161, 0.35); }
+
+/* Nicer custom scrollbar */
+* { scrollbar-width: thin; scrollbar-color: var(--ctp-surface2) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+    background: var(--ctp-surface2);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ctp-overlay0); background-clip: content-box; }
+
+/* Focus-visible accessibility ring (keyboard nav) */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--ctp-mauve);
+    outline-offset: 2px;
+}
