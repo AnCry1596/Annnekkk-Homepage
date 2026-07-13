@@ -226,7 +226,7 @@ app.get('/downloads/:version/:file', (req, reply) => {
 // the dir shadows the .html in static serving, so a bare /downloads 404s. Register
 // only the known pretty-URL pages so the static wildcard still owns everything else
 // (/index.html, /robots.txt, binaries, assets).
-const PAGES = ['downloads', 'changelog', 'pricing'];
+const PAGES = ['downloads', 'changelog', 'pricing', 'admin'];
 for (const p of PAGES) {
   const handler = (_req, reply) => reply.sendFile(`${p}.html`);
   app.get(`/${p}`, handler);
