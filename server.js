@@ -186,7 +186,10 @@ app.post('/api/downloads/:version/file', admin, async (req, reply) => {
   await pipeline(part.file, fs.createWriteStream(dest));
   if (part.file.truncated) { fs.rmSync(dest, { force: true }); return reply.code(400).send({ error: 'file too large' }); }
   const size = fs.statSync(dest).size;
-  await downloads.updateOne({ version }, { $set: { [`files.${suffix}`]: size } });
+  // suffix contains dots (e.g. windows-x64.exe); a `files.${suffix}` dot-path would make
+  // Mongo nest it as files->windows-x64->exe. Rewrite the whole map instead.
+  const files = { ...(doc.files || {}), [suffix]: size };
+  await downloads.updateOne({ version }, { $set: { files } });
   return { ok: true, size };
 });
 
@@ -195,7 +198,10 @@ app.delete('/api/downloads/:version/file/:suffix', admin, async (req) => {
   const doc = await downloads.findOne({ version });
   if (doc) {
     fs.rmSync(path.join(DOWNLOADS, `V${version}`, fileName(doc.prefix, version, suffix)), { force: true });
-    await downloads.updateOne({ version }, { $unset: { [`files.${suffix}`]: '' } });
+    // same dotted-suffix problem as upload: rewrite the map rather than $unset a dot-path.
+    const files = { ...(doc.files || {}) };
+    delete files[suffix];
+    await downloads.updateOne({ version }, { $set: { files } });
   }
   return { ok: true };
 });
